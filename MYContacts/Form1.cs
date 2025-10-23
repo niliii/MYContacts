@@ -15,9 +15,14 @@ namespace MYContacts
 
         private void Form1_Load_1(object sender, EventArgs e)
         {
-            dgContacts.AutoGenerateColumns=false;
+            BindGrid();
+
+        }
+
+        private void BindGrid()
+        {
+            dgContacts.AutoGenerateColumns = false;
             dgContacts.DataSource = repository.SelectAll();
-             
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -35,7 +40,16 @@ namespace MYContacts
 
         }
 
-       
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            BindGrid();
+        }
+
+        private void btnNewContact_Click(object sender, EventArgs e)
+        {
+            frmAddOrEdit frm=new frmAddOrEdit();
+            frm.ShowDialog();
+        }
     }
 
 }

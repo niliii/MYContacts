@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnNewContact = new System.Windows.Forms.ToolStripButton();
+            this.btnRefresh = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgContacts = new System.Windows.Forms.DataGridView();
@@ -37,6 +40,7 @@
             this.Family = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
             this.SuspendLayout();
@@ -44,17 +48,40 @@
             // toolStrip1
             // 
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnNewContact,
+            this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(784, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnNewContact
+            // 
+            this.btnNewContact.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnNewContact.Image = ((System.Drawing.Image)(resources.GetObject("btnNewContact.Image")));
+            this.btnNewContact.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnNewContact.Name = "btnNewContact";
+            this.btnNewContact.Size = new System.Drawing.Size(136, 24);
+            this.btnNewContact.Text = "افزودن شخص جدید";
+            this.btnNewContact.Click += new System.EventHandler(this.btnNewContact_Click);
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(93, 24);
+            this.btnRefresh.Text = "به روز رسانی";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(-47, 12);
+            this.groupBox1.Location = new System.Drawing.Point(-47, 41);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(805, 100);
+            this.groupBox1.Size = new System.Drawing.Size(794, 71);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "جستجو  ";
@@ -63,9 +90,9 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgContacts);
-            this.groupBox2.Location = new System.Drawing.Point(12, 118);
+            this.groupBox2.Location = new System.Drawing.Point(12, 148);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(746, 431);
+            this.groupBox2.Size = new System.Drawing.Size(760, 401);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -83,16 +110,17 @@
             this.Family,
             this.Email,
             this.Age});
-            this.dgContacts.Location = new System.Drawing.Point(17, 38);
+            this.dgContacts.Location = new System.Drawing.Point(18, 94);
             this.dgContacts.Name = "dgContacts";
             this.dgContacts.ReadOnly = true;
             this.dgContacts.RowHeadersWidth = 51;
-            this.dgContacts.Size = new System.Drawing.Size(712, 368);
+            this.dgContacts.Size = new System.Drawing.Size(706, 331);
             this.dgContacts.TabIndex = 0;
             this.dgContacts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // ContactID
             // 
+            this.ContactID.DataPropertyName = "id";
             this.ContactID.HeaderText = "کد شخص";
             this.ContactID.MinimumWidth = 6;
             this.ContactID.Name = "ContactID";
@@ -100,6 +128,7 @@
             // 
             // MyName
             // 
+            this.MyName.DataPropertyName = "Name";
             this.MyName.HeaderText = "نام";
             this.MyName.MinimumWidth = 6;
             this.MyName.Name = "MyName";
@@ -107,6 +136,7 @@
             // 
             // Family
             // 
+            this.Family.DataPropertyName = "ImgeUrl";
             this.Family.HeaderText = "نام خانوادگی";
             this.Family.MinimumWidth = 6;
             this.Family.Name = "Family";
@@ -114,6 +144,7 @@
             // 
             // Email
             // 
+            this.Email.DataPropertyName = "Price";
             this.Email.HeaderText = "ایمیل";
             this.Email.MinimumWidth = 6;
             this.Email.Name = "Email";
@@ -121,6 +152,7 @@
             // 
             // Age
             // 
+            this.Age.DataPropertyName = "Description";
             this.Age.HeaderText = "سن";
             this.Age.MinimumWidth = 6;
             this.Age.Name = "Age";
@@ -138,8 +170,11 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "دفترچه تلفن من";
             this.Load += new System.EventHandler(this.Form1_Load_1);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).EndInit();
             this.ResumeLayout(false);
@@ -158,6 +193,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Family;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.ToolStripButton btnNewContact;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
     }
 }
 
