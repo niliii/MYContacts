@@ -136,7 +136,7 @@
             // 
             // Family
             // 
-            this.Family.DataPropertyName = "ImgeUrl";
+            this.Family.DataPropertyName = "Family";
             this.Family.HeaderText = "نام خانوادگی";
             this.Family.MinimumWidth = 6;
             this.Family.Name = "Family";
@@ -144,7 +144,7 @@
             // 
             // Email
             // 
-            this.Email.DataPropertyName = "Price";
+            this.Email.DataPropertyName = "Email";
             this.Email.HeaderText = "ایمیل";
             this.Email.MinimumWidth = 6;
             this.Email.Name = "Email";
@@ -152,7 +152,7 @@
             // 
             // Age
             // 
-            this.Age.DataPropertyName = "Description";
+            this.Age.DataPropertyName = "Age";
             this.Age.HeaderText = "سن";
             this.Age.MinimumWidth = 6;
             this.Age.Name = "Age";
@@ -188,13 +188,13 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView dgContacts;
+        private System.Windows.Forms.ToolStripButton btnNewContact;
+        private System.Windows.Forms.ToolStripButton btnRefresh;
         private System.Windows.Forms.DataGridViewTextBoxColumn ContactID;
         private System.Windows.Forms.DataGridViewTextBoxColumn MyName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Family;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
-        private System.Windows.Forms.ToolStripButton btnNewContact;
-        private System.Windows.Forms.ToolStripButton btnRefresh;
     }
 }
 

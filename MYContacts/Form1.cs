@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace MYContacts
 {
-    public partial class Form1: Form
+    public partial class Form1 : Form
     {
         IcontactsRepository repository;
         public Form1()
@@ -47,8 +47,12 @@ namespace MYContacts
 
         private void btnNewContact_Click(object sender, EventArgs e)
         {
-            frmAddOrEdit frm=new frmAddOrEdit();
+            frmAddOrEdit frm = new frmAddOrEdit();
             frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                BindGrid();
+            }
         }
     }
 

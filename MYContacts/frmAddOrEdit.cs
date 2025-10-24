@@ -100,7 +100,7 @@ namespace MYContacts
                 if (isSuccess == true)
                 {
 
-                    MessageBox.Show("عملیات با موفقیت انجام شد","موفقیت",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    MessageBox.Show("عملیات با موفقیت انجام شد", "موفقیت", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     DialogResult = DialogResult.OK;
                 }
                 else
