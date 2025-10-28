@@ -40,6 +40,8 @@
             this.Family = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Age = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnEdite = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgContacts)).BeginInit();
@@ -53,7 +55,7 @@
             this.btnRefresh});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(784, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(784, 31);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -63,7 +65,7 @@
             this.btnNewContact.Image = ((System.Drawing.Image)(resources.GetObject("btnNewContact.Image")));
             this.btnNewContact.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnNewContact.Name = "btnNewContact";
-            this.btnNewContact.Size = new System.Drawing.Size(136, 24);
+            this.btnNewContact.Size = new System.Drawing.Size(136, 28);
             this.btnNewContact.Text = "افزودن شخص جدید";
             this.btnNewContact.Click += new System.EventHandler(this.btnNewContact_Click);
             // 
@@ -73,7 +75,7 @@
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
             this.btnRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(93, 24);
+            this.btnRefresh.Size = new System.Drawing.Size(93, 28);
             this.btnRefresh.Text = "به روز رسانی";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -89,6 +91,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnDelete);
+            this.groupBox2.Controls.Add(this.btnEdite);
             this.groupBox2.Controls.Add(this.dgContacts);
             this.groupBox2.Location = new System.Drawing.Point(12, 148);
             this.groupBox2.Name = "groupBox2";
@@ -110,7 +114,7 @@
             this.Family,
             this.Email,
             this.Age});
-            this.dgContacts.Location = new System.Drawing.Point(18, 94);
+            this.dgContacts.Location = new System.Drawing.Point(19, 36);
             this.dgContacts.Name = "dgContacts";
             this.dgContacts.ReadOnly = true;
             this.dgContacts.RowHeadersWidth = 51;
@@ -158,6 +162,25 @@
             this.Age.Name = "Age";
             this.Age.ReadOnly = true;
             // 
+            // btnEdite
+            // 
+            this.btnEdite.Location = new System.Drawing.Point(642, 373);
+            this.btnEdite.Name = "btnEdite";
+            this.btnEdite.Size = new System.Drawing.Size(83, 28);
+            this.btnEdite.TabIndex = 1;
+            this.btnEdite.Text = "ویرایش";
+            this.btnEdite.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(553, 373);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(83, 28);
+            this.btnDelete.TabIndex = 2;
+            this.btnDelete.Text = "حذف";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -195,6 +218,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Family;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Age;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnEdite;
     }
 }
 

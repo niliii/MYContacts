@@ -57,7 +57,27 @@ namespace MYContacts.Repository
 
         public bool Delete(int contactId)
         {
-            throw new System.NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                string query = "Delete From My Contacts where ContactID=@ID";
+                SqlCommand command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@ID", contactId);
+                connection.Open();
+                command.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+
+                connection.Close();
+
+            }
         }
     }
 }

@@ -22,6 +22,7 @@ namespace MYContacts
         private void BindGrid()
         {
             dgContacts.AutoGenerateColumns = false;
+            dgContacts.Columns[0].Visible = false;
             dgContacts.DataSource = repository.SelectAll();
         }
 
@@ -52,6 +53,28 @@ namespace MYContacts
             if (frm.DialogResult == DialogResult.OK)
             {
                 BindGrid();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgContacts.CurrentRow != null)
+            {
+                string name=dgContacts.CurrentRow.Cells[1].Value.ToString();
+                string family = dgContacts.CurrentRow.Cells[2].Value.ToString();
+                string fullName=name+" "+family;
+
+                if (MessageBox.Show($"آیا از حذف {fullName}مطمعنی؟","توجه",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    int contactId = int.Parse(dgContacts.CurrentRow.Cells[0].Value.ToString());
+                    repository.Delete(contactId);
+                    BindGrid();
+                }
+                else
+                {
+                    MessageBox.Show("لطفا یک شخص را انتخاب کنید");
+                }
+
             }
         }
     }
