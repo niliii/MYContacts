@@ -7,6 +7,7 @@ namespace MYContacts
     public partial class Form1 : Form
     {
         IcontactsRepository repository;
+        
         public Form1()
         {
             InitializeComponent();
@@ -60,11 +61,11 @@ namespace MYContacts
         {
             if (dgContacts.CurrentRow != null)
             {
-                string name=dgContacts.CurrentRow.Cells[1].Value.ToString();
+                string name = dgContacts.CurrentRow.Cells[1].Value.ToString();
                 string family = dgContacts.CurrentRow.Cells[2].Value.ToString();
-                string fullName=name+" "+family;
+                string fullName = name + " " + family;
 
-                if (MessageBox.Show($"آیا از حذف {fullName}مطمعنی؟","توجه",MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show($"آیا از حذف {fullName}مطمعنی؟", "توجه", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     int contactId = int.Parse(dgContacts.CurrentRow.Cells[0].Value.ToString());
                     repository.Delete(contactId);
@@ -73,6 +74,21 @@ namespace MYContacts
                 else
                 {
                     MessageBox.Show("لطفا یک شخص را انتخاب کنید");
+                }
+
+            }
+        }
+
+        private void btnEdite_Click(object sender, EventArgs e)
+        {
+            if (dgContacts.CurrentRow != null)
+            {
+                int contactId = int.Parse(dgContacts.CurrentRow.Cells[0].Value.ToString());
+                frmAddOrEdit frm=new frmAddOrEdit();
+                frm.contactId= contactId;
+                if (frm.ShowDialog() == DialogResult.OK) 
+                {
+                    BindGrid();
                 }
 
             }

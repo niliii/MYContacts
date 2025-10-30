@@ -10,10 +10,10 @@ namespace MYContacts.Repository
     class ContactRepository : IcontactsRepository
     {
         private string connectionString = "Data Source=.; Initial Catalog=Contacts; User ID=sa; Password=zxcvZXCV";
-
+        public int contactId = 0;
         public DataTable SelectAll()
         {
-            string query = "SELECT * FROM Contacts";
+            string query = "SELECT * FROM Contacts  ";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -23,7 +23,18 @@ namespace MYContacts.Repository
                 return data;
             }
         }
+        public DataTable SelectRow(int contactId)
+        {
+            string query = "SELECT * FROM Contacts where Id=" + contactId;
 
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                return data;
+            }
+        }
         public bool Insert(string name, string family, string email, string mobile, int age, string address)
         {
             string query = "Insert Into Contacts(Name,Family,Email,Mobile,Age,Address) values (@Name,@Family,@Email,@Mobile,@Age,@Address)";
@@ -52,7 +63,33 @@ namespace MYContacts.Repository
 
         public bool Update(int contactId, string name, string family, string email, string mobile, int age, string address)
         {
-            throw new System.NotImplementedException();
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                string query = "Update Contacts set Name=@Name,Family=@Family,Email=@Email,Mobile=@Mobile,Age=@Age,Address=@Address where Id=@Id";
+                SqlCommand cmd = new SqlCommand(query, connection);
+                cmd.Parameters.AddWithValue("@Id", contactId);
+
+                cmd.Parameters.AddWithValue("@Name", name);
+                cmd.Parameters.AddWithValue("@Family", family);
+                cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Mobile", mobile);
+                cmd.Parameters.AddWithValue("@Age", age);
+                cmd.Parameters.AddWithValue("@Address", address);
+                cmd.CommandType = CommandType.Text;
+                connection.Open();
+
+                int Result = cmd.ExecuteNonQuery();
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            finally
+            {
+                 connection.Close();
+            }
         }
 
         public bool Delete(int contactId)
@@ -61,10 +98,12 @@ namespace MYContacts.Repository
 
             try
             {
-                string query = "Delete From My Contacts where ContactID=@ID";
+                string query = "Delete From Contacts where Id=@Id";
                 SqlCommand command = new SqlCommand(query, connection);
-                command.Parameters.AddWithValue("@ID", contactId);
+                command.Parameters.AddWithValue("@Id", contactId);
                 connection.Open();
+                MessageBox.Show(contactId.ToString());
+
                 command.ExecuteNonQuery();
                 return true;
             }

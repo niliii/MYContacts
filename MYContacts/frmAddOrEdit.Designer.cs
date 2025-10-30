@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtFamily = new System.Windows.Forms.TextBox();
-            this.txtMobile = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtAge = new System.Windows.Forms.NumericUpDown();
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtMobile = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtEamil = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.txt = new System.Windows.Forms.Label();
             this.bynSubmitt = new System.Windows.Forms.Button();
-            this.txtAge = new System.Windows.Forms.NumericUpDown();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAge)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +56,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtMobile);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.txtFamily);
+            this.groupBox1.Controls.Add(this.txtEamil);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtName);
             this.groupBox1.Controls.Add(this.txt);
@@ -69,39 +69,55 @@
             this.groupBox1.Text = "اطلاعات فرد";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // txt
+            // txtAge
             // 
-            this.txt.AutoSize = true;
-            this.txt.Location = new System.Drawing.Point(624, 96);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(32, 16);
-            this.txt.TabIndex = 0;
-            this.txt.Text = "نام: ";
-            this.txt.Click += new System.EventHandler(this.label1_Click);
+            this.txtAge.Location = new System.Drawing.Point(138, 157);
+            this.txtAge.Name = "txtAge";
+            this.txtAge.Size = new System.Drawing.Size(179, 23);
+            this.txtAge.TabIndex = 12;
             // 
-            // txtName
+            // txtAddress
             // 
-            this.txtName.Location = new System.Drawing.Point(426, 89);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(184, 23);
-            this.txtName.TabIndex = 1;
+            this.txtAddress.Location = new System.Drawing.Point(138, 258);
+            this.txtAddress.Multiline = true;
+            this.txtAddress.Name = "txtAddress";
+            this.txtAddress.Size = new System.Drawing.Size(485, 137);
+            this.txtAddress.TabIndex = 11;
             // 
-            // label2
+            // label6
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(317, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 16);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "نام خانوادگی: ";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(624, 261);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 16);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "آدرس:";
             // 
-            // txtFamily
+            // txtEmail
             // 
-            this.txtFamily.Location = new System.Drawing.Point(138, 89);
-            this.txtFamily.Name = "txtFamily";
-            this.txtFamily.Size = new System.Drawing.Size(173, 23);
-            this.txtFamily.TabIndex = 3;
-            this.txtFamily.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.txtEmail.Location = new System.Drawing.Point(138, 209);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(472, 23);
+            this.txtEmail.TabIndex = 9;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(625, 216);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(41, 16);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "ایمیل:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(337, 164);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(35, 16);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "سن:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtMobile
             // 
@@ -122,48 +138,39 @@
             this.label3.Text = "موبایل: ";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label4
+            // txtFamily
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(337, 164);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 16);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "سن:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.txtEamil.Location = new System.Drawing.Point(138, 89);
+            this.txtEamil.Name = "txtFamily";
+            this.txtEamil.Size = new System.Drawing.Size(173, 23);
+            this.txtEamil.TabIndex = 3;
+            this.txtEamil.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // txtEmail
+            // label2
             // 
-            this.txtEmail.Location = new System.Drawing.Point(138, 209);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(472, 23);
-            this.txtEmail.TabIndex = 9;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(317, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(87, 16);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "نام خانوادگی: ";
             // 
-            // label5
+            // txtName
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(625, 216);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(41, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "ایمیل:";
+            this.txtName.Location = new System.Drawing.Point(426, 89);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(184, 23);
+            this.txtName.TabIndex = 1;
             // 
-            // txtAddress
+            // txt
             // 
-            this.txtAddress.Location = new System.Drawing.Point(138, 258);
-            this.txtAddress.Multiline = true;
-            this.txtAddress.Name = "txtAddress";
-            this.txtAddress.Size = new System.Drawing.Size(485, 137);
-            this.txtAddress.TabIndex = 11;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(624, 261);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(42, 16);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "آدرس:";
+            this.txt.AutoSize = true;
+            this.txt.Location = new System.Drawing.Point(624, 96);
+            this.txt.Name = "txt";
+            this.txt.Size = new System.Drawing.Size(32, 16);
+            this.txt.TabIndex = 0;
+            this.txt.Text = "نام: ";
+            this.txt.Click += new System.EventHandler(this.label1_Click);
             // 
             // bynSubmitt
             // 
@@ -174,13 +181,6 @@
             this.bynSubmitt.Text = "ثبت";
             this.bynSubmitt.UseVisualStyleBackColor = true;
             this.bynSubmitt.Click += new System.EventHandler(this.bynSubmitt_Click);
-            // 
-            // txtAge
-            // 
-            this.txtAge.Location = new System.Drawing.Point(138, 157);
-            this.txtAge.Name = "txtAge";
-            this.txtAge.Size = new System.Drawing.Size(179, 23);
-            this.txtAge.TabIndex = 12;
             // 
             // frmAddOrEdit
             // 
@@ -193,6 +193,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmAddOrEdit";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.frmAddOrEdit_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtAge)).EndInit();
@@ -207,7 +208,7 @@
         private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.TextBox txtMobile;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtFamily;
+        private System.Windows.Forms.TextBox txtEamil;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtAddress;

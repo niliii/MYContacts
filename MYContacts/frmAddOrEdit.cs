@@ -14,13 +14,34 @@ namespace MYContacts
     public partial class frmAddOrEdit : Form
     {
         IcontactsRepository Repository;
+        public int contactId = 0;
+        private string txtfamily;
+
         public frmAddOrEdit()
         {
 
             InitializeComponent();
             Repository = new ContactRepository();
         }
+        private void frmAddOrEdit_Load(object sender, EventArgs e)
+        {
+            if (contactId == 0)
+            {
+                this.Text = "افزودن شخص";
 
+            }
+            else
+            {
+                
+                DataTable dt = Repository.SelectRow(contactId);
+                txtName.Text = dt.Rows[0][1].ToString();
+                txtEamil.Text=dt.Rows[0][2].ToString();
+                txtMobile.Text=dt.Rows[0][4].ToString();
+                txtAge.Text=dt.Rows[0][5].ToString();
+                txtAddress.Text=dt.Rows[0][6 ].ToString();
+                bynSubmitt.Text = "ویرایش";
+            }
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
@@ -71,7 +92,7 @@ namespace MYContacts
                 MessageBox.Show("لطفا ایمیل را وارد کنید", "هشدار", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (txtFamily.Text == "")
+            if (txtEamil.Text == "")
             {
 
                 MessageBox.Show("لطفا نام خانوادگی را وارد کنید", "هشدار", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -96,7 +117,15 @@ namespace MYContacts
         {
             if (ValidateInputs())
             {
-                bool isSuccess = Repository.Insert(txtName.Text, txtEmail.Text, txtFamily.Text, txtAddress.Text, (int)txtAge.Value, txtMobile.Text);
+                bool isSuccess;
+                if (contactId == 0)
+                { 
+                    isSuccess = Repository.Insert(txtName.Text, txtEmail.Text, txtEamil.Text, txtAddress.Text, (int)txtAge.Value, txtMobile.Text);
+                }
+                else
+                {
+                   isSuccess = Repository.Update(contactId,txtName.Text, txtEmail.Text, txtEamil.Text, txtAddress.Text, (int)txtAge.Value, txtMobile.Text);
+                }
                 if (isSuccess == true)
                 {
 
@@ -105,10 +134,12 @@ namespace MYContacts
                 }
                 else
                 {
-
-                    MessageBox.Show("عملیات با شکست مواجه شد", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                 MessageBox.Show("عملیات با شکست مواجه شد", "خطا", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
+
+
     }
 }
