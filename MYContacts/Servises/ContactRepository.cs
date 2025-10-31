@@ -66,30 +66,37 @@ namespace MYContacts.Repository
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                string query = "Update Contacts set Name=@Name,Family=@Family,Email=@Email,Mobile=@Mobile,Age=@Age,Address=@Address where Id=@Id";
+                string query = "UPDATE Contacts SET Name=@Name, Family=@Family, Email=@Email, Mobile=@Mobile, Age=@Age, Address=@Address WHERE Id=@Id";
+
                 SqlCommand cmd = new SqlCommand(query, connection);
                 cmd.Parameters.AddWithValue("@Id", contactId);
-
                 cmd.Parameters.AddWithValue("@Name", name);
                 cmd.Parameters.AddWithValue("@Family", family);
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@Mobile", mobile);
                 cmd.Parameters.AddWithValue("@Age", age);
                 cmd.Parameters.AddWithValue("@Address", address);
-                cmd.CommandType = CommandType.Text;
-                connection.Open();
 
-                int Result = cmd.ExecuteNonQuery();
+                connection.Open();
+                int rows = cmd.ExecuteNonQuery();
+
+                if (rows > 0)
+                    MessageBox.Show("ویرایش با موفقیت انجام شد ✅");
+                else
+                    MessageBox.Show("هیچ رکوردی برای ویرایش یافت نشد ⚠️");
+
                 return true;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show("خطا در ویرایش: " + ex.Message);
                 return false;
             }
             finally
             {
-                 connection.Close();
+                connection.Close();
             }
+
         }
 
         public bool Delete(int contactId)
@@ -118,5 +125,22 @@ namespace MYContacts.Repository
 
             }
         }
+
+        public DataTable Search(string parameter)
+        
+               
+            {
+            string query = "SELECT * FROM Contacts where Name like @parameter  or Family like @parameter";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                adapter.SelectCommand.Parameters.AddWithValue("@parameter", "%" + parameter + "%");
+                DataTable data = new DataTable();
+                adapter.Fill(data);
+                return data;
+            }
+        }
+    
     }
 }

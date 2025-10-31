@@ -32,7 +32,7 @@ namespace MYContacts
             }
             else
             {
-                
+                this.Text = "ویرایش شخص";
                 DataTable dt = Repository.SelectRow(contactId);
                 txtName.Text = dt.Rows[0][1].ToString();
                 txtEamil.Text=dt.Rows[0][2].ToString();

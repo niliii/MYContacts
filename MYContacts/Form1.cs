@@ -93,6 +93,11 @@ namespace MYContacts
 
             }
         }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            dgContacts.DataSource = repository.Search(txtSearch.Text);
+        }
     }
 
 }
